@@ -963,6 +963,11 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 @media (max-width:960px){.brand__logo{height:62px;max-width:280px}}
 @media (max-width:560px){.brand__logo{height:52px;max-width:230px}}
 
+/* Logo a touch bigger — scaled visually so its layout box (and therefore the
+   header height and padding) stays exactly as before */
+.brand__logo{transform:scale(1.08);transform-origin:left center}
+.brand:hover .brand__logo{transform:scale(1.1)}
+
 /* Footer logo — needs a light plate so the logo's black wordmark stays legible on the dark footer */
 .site-footer__brand img{
   background:#faf7f1;
