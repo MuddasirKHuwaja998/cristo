@@ -963,10 +963,7 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 @media (max-width:960px){.brand__logo{height:62px;max-width:280px}}
 @media (max-width:560px){.brand__logo{height:52px;max-width:230px}}
 
-/* Logo a touch bigger — scaled visually so its layout box (and therefore the
-   header height and padding) stays exactly as before */
-.brand__logo{transform:scale(1.08);transform-origin:left center}
-.brand:hover .brand__logo{transform:scale(1.1)}
+/* Logo sizing now lives in the v7 block at the end of this file */
 
 /* Footer logo — needs a light plate so the logo's black wordmark stays legible on the dark footer */
 .site-footer__brand img{
@@ -1356,4 +1353,107 @@ body.is-loaded .preloader__stage{transform:scale(1.04);transition:transform .9s 
 @media (max-width:900px){
   .intro__gallery{position:static;gap:32px}
   .intro__gallery__images{max-width:560px;margin:0 auto}
+}
+
+/* =========================================================
+   v7 — Bigger logo (real box, no transform) + CEO caption
+        below the portrait, single name only
+   ========================================================= */
+
+/* Logo — sized by height so the header reserves the space it actually uses.
+   logo-full.png is 1772x709 (≈2.5:1), so width ≈ height x 2.5.
+   The max-width guard makes collision with the burger impossible on any phone.
+   --header-h tracks the SCROLLED header height (logo height + 20px padding) and
+   drives the sticky offsets + anchor scroll padding below. */
+:root{--header-h:112px}
+.brand__logo{
+  height:118px;width:auto;
+  max-width:min(460px, calc(100vw - 140px));
+  object-fit:contain;
+  transform:none;
+  transition:height .4s var(--easing), transform .5s var(--easing);
+}
+.site-header.is-scrolled .brand__logo{height:92px}
+.brand:hover .brand__logo{transform:translateY(-1px)}
+
+@media (max-width:1400px){
+  :root{--header-h:104px}
+  .brand__logo{height:106px}
+  .site-header.is-scrolled .brand__logo{height:84px}
+}
+@media (max-width:1200px){
+  :root{--header-h:96px}
+  .brand__logo{height:94px}
+  .site-header.is-scrolled .brand__logo{height:76px}
+}
+/* 960–1100px is the tight band where the nav + CTA are still visible:
+   hold the logo near its previous width so nothing wraps */
+@media (max-width:1100px){
+  :root{--header-h:88px}
+  .brand__logo{height:80px}
+  .site-header.is-scrolled .brand__logo{height:68px}
+}
+@media (max-width:1024px){
+  :root{--header-h:84px}
+  .brand__logo{height:74px}
+  .site-header.is-scrolled .brand__logo{height:64px}
+}
+/* Below 960px the nav collapses to the burger — room to breathe again */
+@media (max-width:960px){
+  :root{--header-h:82px}
+  .brand__logo{height:76px}
+  .site-header.is-scrolled .brand__logo{height:62px}
+}
+@media (max-width:560px){
+  :root{--header-h:74px}
+  .brand__logo{height:64px}
+  .site-header.is-scrolled .brand__logo{height:54px}
+}
+@media (max-width:380px){
+  :root{--header-h:68px}
+  .brand__logo{height:56px}
+  .site-header.is-scrolled .brand__logo{height:48px}
+}
+
+/* Anchors and sticky columns must clear the fixed header at every size */
+html{scroll-padding-top:calc(var(--header-h) + 16px)}
+.intro__gallery,
+.vision__portrait{top:calc(var(--header-h) + 24px)}
+
+/* The hero must always start below the header, including short landscape phones
+   where 20vh is smaller than the header itself */
+.hero__inner{
+  padding-top:max(clamp(130px,20vh,220px), calc(var(--header-h) + 56px));
+}
+
+/* Kill the sideways drag on phones: the reveal/marquee/hero transforms push a
+   few px past the viewport. `clip` (not `hidden`) does not create a scroll
+   container, so position:sticky keeps working. */
+html{overflow-x:clip}
+body{overflow-x:clip}
+
+/* FIX: the v6 block re-declared .reveal[data-anim="left"|"right"] AFTER
+   .reveal.is-in — same specificity, later source — so revealed elements kept
+   their -56px/+56px offset forever. On desktop the wide gutters hid it; on a
+   phone it pushed the CEO photo (and its caption) off the left edge.
+   is-in/is-out are mutually exclusive in script.js, so this lands last and
+   still lets .is-out re-hide on scroll-out. */
+.reveal.is-in:not(.is-out){
+  opacity:1;
+  transform:none;
+  clip-path:inset(0 0 0 0);
+}
+
+/* ── CEO portrait: the only name/role, sitting under the photo on the left ── */
+.vision__caption{
+  position:static;left:auto;bottom:auto;z-index:auto;
+  margin-top:18px;gap:5px;text-align:left;align-items:flex-start;
+}
+.vision__name{font-size:clamp(20px,1.6vw,24px);line-height:1.2}
+.vision__role{font-size:11px;line-height:1.5}
+
+/* Keep the caption aligned with the photo once the portrait centres itself
+   (the frame was capped at 420px from 960px down, the figure only from 900px) */
+@media (max-width:960px){
+  .vision__portrait{max-width:420px;margin:0 auto;position:static;top:auto}
 }
