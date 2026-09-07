@@ -254,11 +254,6 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 
 /* ============ Intro / Chi Siamo (REDESIGNED) ============ */
 .intro{padding:clamp(100px,13vw,180px) clamp(20px,4vw,60px);background:var(--cream);position:relative;overflow:hidden}
-.intro::before{
-  content:"CHI SIAMO";position:absolute;top:-4vw;right:-2vw;
-  font-family:var(--f-serif);font-weight:300;font-style:italic;
-  font-size:clamp(120px,22vw,320px);color:rgba(38,96,65,.045);line-height:.9;letter-spacing:-.04em;pointer-events:none;
-}
 .intro__grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(50px,8vw,120px);align-items:center;position:relative}
 .intro__gallery{
   position:relative;
@@ -412,11 +407,6 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 /* ============ CTA / Contatti (REDESIGNED) ============ */
 /* ============ CTA / Contatti (REDESIGNED) ============ */
 .cta{background:linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);padding:clamp(100px,13vw,180px) clamp(20px,4vw,60px);position:relative;overflow:hidden}
-.cta::before{
-  content:"CONTATTI";position:absolute;bottom:-6vw;left:-2vw;
-  font-family:var(--f-serif);font-weight:300;font-style:italic;
-  font-size:clamp(140px,24vw,340px);color:rgba(38,96,65,.05);line-height:.9;pointer-events:none;letter-spacing:-.04em;
-}
 .cta__inner{max-width:1200px;margin:0 auto;text-align:center;position:relative}
 .cta__inner .section-label{justify-content:center}
 .cta__inner .display{margin-top:8px;max-width:22ch;margin-left:auto;margin-right:auto}
@@ -486,21 +476,13 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 /* ============ Footer ============ */
 .site-footer{background:var(--ink);color:rgba(255,255,255,.8);padding:clamp(70px,9vw,120px) clamp(20px,4vw,60px) 30px;position:relative;overflow:hidden}
 .site-footer__top{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.3fr 2fr;gap:60px}
-.site-footer__brand img{width:220px;height:auto;background:#fff;padding:18px 22px;border-radius:10px;margin-bottom:24px}
+.site-footer__brand img{width:220px;height:auto;background:none;padding:0;border-radius:0;margin-bottom:24px}
 .site-footer__brand p{color:rgba(255,255,255,.7);font-size:15px;line-height:1.7;max-width:42ch;font-family:var(--f-serif);font-style:italic;font-weight:300}
 .site-footer__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .site-footer__cols h4{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin:0 0 20px;font-weight:700}
 .site-footer__cols ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
 .site-footer__cols a,.site-footer__cols li{color:rgba(255,255,255,.75);font-size:15px;transition:color .3s, transform .3s;display:inline-block}
 .site-footer__cols a:hover{color:var(--orange);transform:translateX(3px)}
-
-.site-footer__mega{
-  display:flex;justify-content:center;align-items:center;margin:clamp(60px,8vw,100px) 0 20px;
-  font-family:var(--f-serif);font-weight:300;font-style:italic;
-  font-size:clamp(90px,20vw,260px);line-height:.9;color:rgba(255,255,255,.07);letter-spacing:-.035em;
-  overflow:hidden;user-select:none;
-}
-.site-footer__mega em{color:var(--orange);font-style:italic;opacity:.55}
 
 .site-footer__bottom{max-width:1400px;margin:20px auto 0;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.04em}
 .site-footer__bottom a{margin-left:22px;color:rgba(255,255,255,.65);transition:color .3s}
@@ -587,8 +569,6 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
   content:"";display:inline-block;width:36px;height:1px;background:var(--orange);margin-right:16px;
 }
 
-/* Update watermark on renamed section */
-.intro::before{content:"COSA FACCIAMO"}
 /* Tighten section rhythm for a denser, premium feel */
 .intro{padding:clamp(80px,10vw,140px) clamp(20px,4vw,60px)}
 .news{padding:clamp(80px,10vw,140px) clamp(20px,4vw,60px)}
@@ -604,8 +584,7 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
   padding-top:clamp(80px,10vw,130px);
 }
 .site-footer__brand img{
-  width:260px;background:#fff;padding:20px 24px;border-radius:12px;
-  box-shadow:0 20px 50px -20px rgba(0,0,0,.5);
+  width:260px;
 }
 .site-footer__brand p{
   color:rgba(255,255,255,.88);font-size:16px;line-height:1.75;
@@ -628,9 +607,6 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 }
 .site-footer__cols a:hover{color:#fff;transform:none;letter-spacing:.02em}
 .site-footer__cols a:hover::before{width:16px;margin-right:8px}
-
-.site-footer__mega{color:rgba(255,255,255,.12)}
-.site-footer__mega em{color:var(--orange);opacity:.7}
 
 .site-footer__bottom{color:rgba(255,255,255,.7);font-size:13px}
 .site-footer__bottom a{color:rgba(255,255,255,.85);position:relative}
@@ -725,12 +701,6 @@ body{font-family:var(--f-sans);font-weight:400;font-size:17px;letter-spacing:.00
 .intro__signature-text,
 .mobile-menu ol a,
 .marquee__track,
-.site-footer__mega{
-  font-family:var(--f-display);
-  font-weight:800;
-  font-style:normal;
-  letter-spacing:-.02em;
-}
 .hero__title{font-weight:800;letter-spacing:-.03em;line-height:1.02}
 .hero__title em{font-style:normal;font-weight:800;color:var(--orange)}
 .display em,
@@ -778,7 +748,7 @@ body{font-family:var(--f-sans);font-weight:400;font-size:17px;letter-spacing:.00
 /* Footer logo container — remove white card so the colored logo shows on dark */
 .site-footer__brand img{
   background:transparent;padding:0;border-radius:0;box-shadow:none;
-  width:320px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.5));
+  width:320px;
 }
 
 /* ============ VIDEO PRELOADER ============ */
@@ -823,11 +793,6 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
     radial-gradient(60% 80% at 0% 100%, rgba(241,144,53,.14), transparent 60%),
     linear-gradient(180deg, #0f1613 0%, #141a16 60%, #0d1310 100%);
   color:#fff;
-}
-.vision::before{
-  content:"VISIONE";position:absolute;top:-4vw;left:-2vw;
-  font-family:var(--f-display);font-weight:900;
-  font-size:clamp(120px,22vw,320px);color:rgba(255,255,255,.035);line-height:.9;letter-spacing:-.05em;pointer-events:none;
 }
 .vision__inner{
   max-width:1320px;margin:0 auto;position:relative;
@@ -966,13 +931,20 @@ body.is-loaded .preloader{opacity:0;visibility:hidden;pointer-events:none}
 /* Logo sizing now lives in the v7 block at the end of this file */
 
 /* Footer logo — needs a light plate so the logo's black wordmark stays legible on the dark footer */
+/* "Logo Bianco.png" is a transparent PNG already drawn in white for a dark
+   ground (the black "TELEMEDICINA" sits inside its own white pill). Any panel
+   behind it — the cream box this rule used to paint — makes the mark disappear,
+   so it stays fully transparent with no filter recolouring the pill. */
 .site-footer__brand img{
-  background:#faf7f1;
-  padding:22px 28px;
-  border-radius:14px;
-  width:280px;
-  box-shadow:0 24px 60px -24px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05) inset;
+  background:none;
+  padding:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
   filter:none;
+  width:clamp(230px, 24vw, 300px);
+  height:auto;
+  display:block;
 }
 
 /* =========================================================
